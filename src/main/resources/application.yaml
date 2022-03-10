@@ -28,4 +28,4 @@ spring:
         dialect:
           storage_engine: innodb
         format_sql: true
-        hbm2ddl.auto: none
+        hbm2ddl.auto: create-drop
