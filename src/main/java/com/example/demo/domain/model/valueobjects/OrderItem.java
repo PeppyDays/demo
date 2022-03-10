@@ -3,6 +3,7 @@ package com.example.demo.domain.model.valueobjects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
@@ -12,6 +13,7 @@ import java.util.Objects;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class OrderItem {
 
     @Embedded
