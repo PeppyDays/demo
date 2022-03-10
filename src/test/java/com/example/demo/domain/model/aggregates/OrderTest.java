@@ -1,16 +1,14 @@
 package com.example.demo.domain.model.aggregates;
 
 import com.example.demo.domain.model.commands.PlaceOrderCommand;
-import com.example.demo.infrastracture.repositories.OrderRepository;
+import com.example.demo.domain.model.repositories.OrderRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Commit;
-
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Optional;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -40,8 +38,8 @@ class OrderTest {
     @DisplayName("1개 주문을 실제 사용중인 데이터베이스에서 불러온다.")
     void testLoadingOrder() {
 
-        Optional<Order> order = orderRepository.findByOrderId(1L);
-        System.out.println(order.get());
+        Order order = orderRepository.findByOrderId(1L);
+        System.out.println(order);
     }
 
     @Test
@@ -50,7 +48,7 @@ class OrderTest {
     @DisplayName("1개 주문을 완료 처리해서 상태를 성공으로 변경한다.")
     void testCompletingOrder() {
 
-        Order order = orderRepository.findByOrderId(1L).get();
+        Order order = orderRepository.findByOrderId(1L);
         order.completeOrder();
     }
 }
