@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  demo-local-database:
+    image: mysql:8
+    hostname: demo-local-database
+    container_name: demo-local-database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: welcome
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/main/resources/db/container/setup:/docker-entrypoint-initdb.d
+    command:
+      - --default-time-zone=UTC
+#      - --character-set-server=utf8mb4
+#      - --collation-server=utf8mb4_unicode_ci
+#      - --character-set-client-handshake=0
+      - --slow-query-log=ON
+      - --long-query-time=2
+
+# Run docker compose command:
+# docker compose -p demo up -d
+# docker compose -p demo down --remove-orphans
