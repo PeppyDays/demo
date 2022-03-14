@@ -3,7 +3,6 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
     id 'java'
-    id 'org.flywaydb.flyway' version '8.5.2'
 }
 
 group = 'com.example'
@@ -52,10 +51,4 @@ sourceSets {
 }
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
-}
-
-flyway {
-    url = 'jdbc:mysql://127.0.0.1:3306/demo'
-    user = 'demo'
-    password = 'welcome'
 }
